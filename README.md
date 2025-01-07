@@ -1,5 +1,10 @@
 # Calculator Application
 
+## Showcase  
+Here’s a demonstration of how the calculator looks in action:
+
+![Showcase](Assets/showcase.gif)
+
 ## Overview  
 This project is part of the **BTEC Level 3 Diploma in Computing - Unit 16: Object-Oriented Programming**. The aim is to design and develop an object-oriented solution for a specific problem, demonstrating programming concepts like inheritance, polymorphism, and the use of graphical user interfaces (GUI).  
 
@@ -44,6 +49,7 @@ For this task, I am building a **Calculator App** using **Python** and **Tkinter
 ## File Structure  
 - `calculator.py` - Main program file containing the source code.  
 - `README.md` - This file explains the project.  
+- `Assets/showcase.gif` - A visual demonstration of the calculator app in action.
 
 ---
 
