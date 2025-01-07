@@ -12,11 +12,20 @@ class CalculatorApp:
         self.display = tk.Entry(self.root, font=("Arial", 20), bd=10, insertwidth=2, width=14, justify="right")
         self.display.grid(row=0, column=0, columnspan=4, pady=10)
 
-        self.build_ui()
+        # add number buttons
+        buttons = [
+            ("7", 1, 0), ("8", 1, 1), ("9", 1, 2),
+            ("4", 2, 0), ("5", 2, 1), ("6", 2, 2),
+            ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("0", 4, 1)
+        ]
 
-    def build_ui(self):
-        # to be added
-        pass
+        for (text, row, col) in buttons:
+            button = tk.Button(self.root, text=text, font=("Arial", 18), padx=20, pady=20, command=lambda t=text: self.append_to_display(t))
+            button.grid(row=row, column=col, sticky="nsew")
+
+    def append_to_display(self, value):
+        # append the pressed button's value to the display
+        self.display.insert(tk.END, value)
 
 # run the app
 if __name__ == "__main__":
