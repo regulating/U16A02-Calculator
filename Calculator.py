@@ -19,6 +19,13 @@ class CalculatorApp:
             self.root.grid_columnconfigure(i, weight=1)
 
         # add number buttons
+        self.add_number_buttons()
+
+        # add operation buttons
+        self.add_operation_buttons()
+
+    def add_number_buttons(self):
+        # button layout for numbers
         buttons = [
             ("7", 1, 0), ("8", 1, 1), ("9", 1, 2),
             ("4", 2, 0), ("5", 2, 1), ("6", 2, 2),
@@ -29,7 +36,8 @@ class CalculatorApp:
             button = tk.Button(self.root, text=text, font=("Arial", 18), padx=20, pady=20, command=lambda t=text: self.append_to_display(t))
             button.grid(row=row, column=col, sticky="nsew")
 
-        # add operation buttons
+    def add_operation_buttons(self):
+        # button layout for operations
         operations = [
             ("C", 1, 3), ("/", 2, 3), ("*", 3, 3),
             ("-", 4, 2), ("+", 4, 3), ("=", 4, 0)
