@@ -12,6 +12,12 @@ class CalculatorApp:
         self.display = tk.Entry(self.root, font=("Arial", 20), bd=10, insertwidth=2, width=14, justify="right")
         self.display.grid(row=0, column=0, columnspan=4, pady=10)
 
+        # configure grid layout
+        for i in range(5):
+            self.root.grid_rowconfigure(i, weight=1)
+        for i in range(4):
+            self.root.grid_columnconfigure(i, weight=1)
+
         # add number buttons
         buttons = [
             ("7", 1, 0), ("8", 1, 1), ("9", 1, 2),
