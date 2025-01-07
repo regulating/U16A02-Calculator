@@ -29,7 +29,7 @@ class CalculatorApp:
         buttons = [
             ("7", 1, 0), ("8", 1, 1), ("9", 1, 2),
             ("4", 2, 0), ("5", 2, 1), ("6", 2, 2),
-            ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("0", 4, 1)
+            ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("0", 4, 1), (".", 4, 2)
         ]
 
         for (text, row, col) in buttons:
@@ -40,7 +40,7 @@ class CalculatorApp:
         # button layout for operations
         operations = [
             ("C", 1, 3), ("/", 2, 3), ("*", 3, 3),
-            ("-", 4, 2), ("+", 4, 3), ("=", 4, 0)
+            ("-", 4, 0), ("+", 4, 3), ("=", 4, 4)
         ]
 
         for (text, row, col) in operations:
@@ -56,7 +56,7 @@ class CalculatorApp:
             self.display.delete(0, tk.END)  # clear the display
         elif operator == "=":
             try:
-                result = eval(self.display.get())  # eval the expression
+                result = eval(self.display.get())  # eval the expression (will work with floats as well)
                 self.display.delete(0, tk.END)
                 self.display.insert(tk.END, str(result))
             except Exception as e:
