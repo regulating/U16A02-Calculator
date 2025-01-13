@@ -1,5 +1,21 @@
 import tkinter as tk
 
+# base class for buttons
+class CalculatorButton:
+    def __init__(self, root, text, row, col, command):
+        self.button = tk.Button(root, text=text, font=("Arial", 18), padx=20, pady=20, command=command)
+        self.button.grid(row=row, column=col, sticky="nsew")
+
+# number button class
+class NumberButton(CalculatorButton):
+    def __init__(self, root, text, row, col, app):
+        super().__init__(root, text, row, col, command=lambda: app.append_to_display(text))
+
+# operation button class
+class OperationButton(CalculatorButton):
+    def __init__(self, root, text, row, col, app):
+        super().__init__(root, text, row, col, command=lambda: app.handle_operation(text))
+
 # main app window
 class CalculatorApp:
     def __init__(self, root):
@@ -33,19 +49,17 @@ class CalculatorApp:
         ]
 
         for (text, row, col) in buttons:
-            button = tk.Button(self.root, text=text, font=("Arial", 18), padx=20, pady=20, command=lambda t=text: self.append_to_display(t))
-            button.grid(row=row, column=col, sticky="nsew")
+            NumberButton(self.root, text, row, col, self)
 
     def add_operation_buttons(self):
         # button layout for operations
         operations = [
             ("C", 1, 3), ("/", 2, 3), ("*", 3, 3),
-            ("-", 4, 0), ("+", 4, 3), ("=", 4, 4)
+            ("-", 4, 0), ("+", 4, 3), ("=", 4, 2)
         ]
 
         for (text, row, col) in operations:
-            button = tk.Button(self.root, text=text, font=("Arial", 18), padx=20, pady=20, command=lambda t=text: self.handle_operation(t))
-            button.grid(row=row, column=col, sticky="nsew")
+            OperationButton(self.root, text, row, col, self)
 
     def append_to_display(self, value):
         # append the pressed button's value to the display
@@ -66,7 +80,7 @@ class CalculatorApp:
             self.append_to_display(operator)
 
 # run the app
-if __name__ == "__main__":
+if __name__ == "__main__": 
     root = tk.Tk()
     app = CalculatorApp(root)
     root.mainloop()
